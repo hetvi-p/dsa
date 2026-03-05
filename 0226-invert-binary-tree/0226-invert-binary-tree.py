@@ -7,11 +7,19 @@
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
 
-        if not root:
-            return root
+        q = collections.deque()
+        if root:
+            q.append(root)
 
-        temp = root.right
-        root.right = self.invertTree(root.left)
-        root.left = self.invertTree(temp)
-
+        while q:
+            node = q.popleft()
+            temp = node.left
+            node.left = node.right
+            node.right = temp
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+        
         return root
+
