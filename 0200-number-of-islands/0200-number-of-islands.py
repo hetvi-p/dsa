@@ -1,6 +1,7 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        
+    
+
         directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
         nr, nc = len(grid), len(grid[0])
         islands = 0
@@ -12,7 +13,7 @@ class Solution:
             q.append((r,c))
 
             while q:
-                r , c = q.popleft()
+                r , c = q.pop()
                 for dr, dc in directions:
                     if ((r + dr) in range(nr) and (c + dc) in range(nc) and
                     grid[r + dr][c + dc] == "1" and (r + dr, c + dc) not in visited):
@@ -27,5 +28,10 @@ class Solution:
                     islands += 1
 
         return islands
+
+                
+
+
+
 
                 
